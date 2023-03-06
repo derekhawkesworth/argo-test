@@ -1,23 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: busybox
+  name: ubuntu
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: busybox
+      app: ubuntu
   template:
     metadata:
       labels:
-        app: busybox
+        app: ubuntu
     spec:
       containers:
-      - name: busybox0
-        image: busybox:musl
+      - name: ubuntu0
+        image: ubuntu:lunar
         resources:
           limits:
             memory: "128Mi"
             cpu: "200m"
-        ports:
-        - containerPort: 80
