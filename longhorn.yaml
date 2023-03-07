@@ -3735,21 +3735,17 @@ kind: Service
 apiVersion: v1
 metadata:
   labels:
-    app.kubernetes.io/name: longhorn
-    app.kubernetes.io/instance: longhorn
-    app.kubernetes.io/version: v1.4.0
     app: longhorn-ui
   name: longhorn-frontend
   namespace: longhorn-system
 spec:
-  type: ClusterIP
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 8000
+    name: web
   selector:
     app: longhorn-ui
-  ports:
-  - name: http
-    port: 80
-    targetPort: http
-    nodePort: null
 ---
 # Source: longhorn/templates/services.yaml
 apiVersion: v1
